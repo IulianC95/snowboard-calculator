@@ -1,5 +1,4 @@
-import React from 'react';
-import Calculator from './Calculator';
+import Calculator from './Calculator'; // Nu mai este necesar importul React
 
 function App() {
   return (

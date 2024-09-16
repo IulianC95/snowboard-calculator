@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react'; // Import doar useState
 
 const Calculator = () => {
   const [height, setHeight] = useState('');
