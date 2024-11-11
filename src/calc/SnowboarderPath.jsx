@@ -1,36 +1,35 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import snowboarderImage from '../assets/snowboarder.png'; // Ensure the path is correct
-import flagImage from '../assets/flag.png'; // Ensure the path is correct
+import snowboarderImage from '../assets/snowboarder.png';
+import flagImage from '../assets/flag.png';
 
 export const SnowboarderPath = ({ currentStep }) => {
   const totalSteps = 6;
 
-  // State to store random horizontal positions for flags
   const [flagPositions, setFlagPositions] = useState([]);
 
-  // Generate random horizontal positions for the flags
   useEffect(() => {
     const positions = [];
     for (let i = 0; i < totalSteps; i++) {
-      const topPosition = `${(i + 1) * 13}%`; // Vertical positioning (spaced equally)
-      const leftPosition = `${Math.random() * 80 + 1}%`; // Random horizontal positioning (10% - 90%)
+      const topPosition = `${(i + 1) * 13}%`;
+      const leftPosition = `${Math.random() * 60 + 20}%`;
       positions.push({ top: topPosition, left: leftPosition });
     }
-    console.log('Generated flag positions: ', positions); // Debugging log
     setFlagPositions(positions);
   }, []);
 
   return (
-    <div className="relative w-full h-[600px]">
-      {/* Render the flags only */}
+    <div
+      className="relative w-full h-[600px] px-8 mx-auto"
+      style={{ maxWidth: '500px' }}
+    >
       {flagPositions.map((pos, index) => (
         <div
           key={index}
           className="absolute"
           style={{ top: pos.top, left: pos.left }}
         >
-          {/* Debugging borders around the flag */}
           <div className="w-24 h-18">
             <img
               src={flagImage}
@@ -43,17 +42,16 @@ export const SnowboarderPath = ({ currentStep }) => {
         </div>
       ))}
 
-      {/* Snowboarder */}
       {flagPositions.length > 0 && (
         <img
           src={snowboarderImage}
           alt="Snowboarder"
           className="absolute transition-all duration-1000"
           style={{
-            top: `calc(${flagPositions[currentStep].top} - 2rem)`, // Adjusting position slightly
-            left: `calc(${flagPositions[currentStep].left} - 4rem)`, // Adjusting for larger image
-            width: '96px', // Doubling the snowboarder image size
-            height: '96px', // Keeping aspect ratio in sync
+            top: `calc(${flagPositions[currentStep].top} - 2rem)`,
+            left: `calc(${flagPositions[currentStep].left} - 4rem)`,
+            width: '96px',
+            height: '96px',
           }}
         />
       )}
@@ -61,7 +59,6 @@ export const SnowboarderPath = ({ currentStep }) => {
   );
 };
 
-// PropTypes validation for SnowboarderPath
 SnowboarderPath.propTypes = {
   currentStep: PropTypes.number.isRequired,
 };

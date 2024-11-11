@@ -7,12 +7,11 @@ export const NavigationBtns = ({
   totalSlides,
   handleNext,
   handlePrev,
-  isFinalStep,
 }) => {
   return (
-    <div className="flex justify-between w-full mt-8">
+    <div className="flex justify-between w-11/12 mt-8">
       <button
-        className="bg-gray-700 text-white py-2 px-6 rounded-md"
+        className="bg-gray-700 text-white py-2 w-4/12 px-6 rounded-md"
         onClick={handlePrev}
         disabled={currentSlide === 0}
         type="button"
@@ -21,18 +20,24 @@ export const NavigationBtns = ({
       </button>
 
       <button
-        className="bg-blue-500 text-white py-2 px-6 rounded-md"
-        onClick={handleNext}
-        disabled={currentSlide === totalSlides - 1 && !isFinalStep}
+        className="bg-blue-500 text-white py-2 w-4/12 px-6 rounded-md"
+        onClick={
+          currentSlide === totalSlides - 1
+            ? () => window.location.reload()
+            : handleNext
+        }
         type="button"
       >
-        {currentSlide === totalSlides - 1 ? 'Calculează' : 'Înainte'}
+        {currentSlide === totalSlides - 2
+          ? 'Calculează'
+          : currentSlide === totalSlides - 1
+          ? 'Resetează'
+          : 'Înainte'}
       </button>
     </div>
   );
 };
 
-// Adaugă validarea tipurilor de prop-uri
 NavigationBtns.propTypes = {
   currentSlide: PropTypes.number.isRequired,
   totalSlides: PropTypes.number.isRequired,
