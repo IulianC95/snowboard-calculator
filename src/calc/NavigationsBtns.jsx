@@ -15,6 +15,7 @@ export const NavigationBtns = ({
         className="bg-gray-700 text-white py-2 px-6 rounded-md"
         onClick={handlePrev}
         disabled={currentSlide === 0}
+        type="button"
       >
         Înapoi
       </button>
@@ -23,6 +24,7 @@ export const NavigationBtns = ({
         className="bg-blue-500 text-white py-2 px-6 rounded-md"
         onClick={handleNext}
         disabled={currentSlide === totalSlides - 1 && !isFinalStep}
+        type="button"
       >
         {currentSlide === totalSlides - 1 ? 'Calculează' : 'Înainte'}
       </button>

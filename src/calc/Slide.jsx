@@ -1,31 +1,19 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes for validation
 import { NavigationBtns } from './NavigationsBtns';
 
-export const Slide = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
+export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
   // Stări separate pentru fiecare input
-  const [gender, setGender] = useState('');
-  const [height, setHeight] = useState('');
-  const [weight, setWeight] = useState('');
-  const [style, setStyle] = useState('');
-  const [experience, setExperience] = useState('');
+  const [gender, setGender] = React.useState('');
+  const [height, setHeight] = React.useState('');
+  const [weight, setWeight] = React.useState('');
+  const [style, setStyle] = React.useState('');
+  const [experience, setExperience] = React.useState('');
 
-  const handleNext = (event) => {
-    event.preventDefault();
-    if (currentSlide < slides.length - 1) {
-      setCurrentSlide(currentSlide + 1);
-    } else {
-      console.log('Finalizarea formularului');
-    }
-  };
-
-  const handlePrev = (event) => {
-    event.preventDefault();
-    if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
-    }
+  // Funcție comună pentru selectarea unui buton și colorarea lui
+  const handleSelect = (setValue, value) => {
+    setValue(value); // Salvează valoarea selectată în state
   };
 
   // Slide-urile gestionate printr-un array de obiecte
@@ -34,49 +22,37 @@ export const Slide = () => {
       id: 1,
       content: (
         <>
-          <label htmlFor="gender" className="text-xl">
+          <label htmlFor="gender" className="text-xl mb-4">
             Placa pentru:
           </label>
           <div className="flex gap-6 mt-4">
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="gender"
-                id="barbat"
-                value="barbat"
-                checked={gender === 'barbat'}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              <label htmlFor="barbat" className="text-lg">
-                Barbat
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="gender"
-                id="femeie"
-                value="femeie"
-                checked={gender === 'femeie'}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              <label htmlFor="femeie" className="text-lg">
-                Femeie
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="gender"
-                id="copil"
-                value="copil"
-                checked={gender === 'copil'}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              <label htmlFor="copil" className="text-lg">
-                Copil
-              </label>
-            </div>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                gender === 'barbat' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setGender, 'barbat')}
+            >
+              Barbat
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                gender === 'femeie' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setGender, 'femeie')}
+            >
+              Femeie
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                gender === 'copil' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setGender, 'copil')}
+            >
+              Copil
+            </button>
           </div>
         </>
       ),
@@ -127,45 +103,35 @@ export const Slide = () => {
             Riding Style
           </label>
           <div className="flex gap-6 mt-4">
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="style"
-                id="all-mountain"
-                value="all-mountain"
-                checked={style === 'all-mountain'}
-                onChange={(e) => setStyle(e.target.value)}
-              />
-              <label htmlFor="all-mountain" className="text-lg">
-                All-mountain
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="style"
-                id="freestyle"
-                value="freestyle"
-                checked={style === 'freestyle'}
-                onChange={(e) => setStyle(e.target.value)}
-              />
-              <label htmlFor="freestyle" className="text-lg">
-                Freestyle
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="style"
-                id="freeride"
-                value="freeride"
-                checked={style === 'freeride'}
-                onChange={(e) => setStyle(e.target.value)}
-              />
-              <label htmlFor="freeride" className="text-lg">
-                Freeride
-              </label>
-            </div>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                style === 'all-mountain'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setStyle, 'all-mountain')}
+            >
+              All-mountain
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                style === 'freestyle' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setStyle, 'freestyle')}
+            >
+              Freestyle
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                style === 'freeride' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setStyle, 'freeride')}
+            >
+              Freeride
+            </button>
           </div>
         </>
       ),
@@ -177,59 +143,51 @@ export const Slide = () => {
           <label htmlFor="experience" className="text-xl">
             Câtă experiență ai?
           </label>
-          <div className="flex gap-6 mt-4">
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experience"
-                id="incepator"
-                value="incepator"
-                checked={experience === 'incepator'}
-                onChange={(e) => setExperience(e.target.value)}
-              />
-              <label htmlFor="incepator" className="text-lg">
-                Începător
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experience"
-                id="intermediar"
-                value="intermediar"
-                checked={experience === 'intermediar'}
-                onChange={(e) => setExperience(e.target.value)}
-              />
-              <label htmlFor="intermediar" className="text-lg">
-                Intermediar
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experience"
-                id="avansat"
-                value="avansat"
-                checked={experience === 'avansat'}
-                onChange={(e) => setExperience(e.target.value)}
-              />
-              <label htmlFor="avansat" className="text-lg">
-                Avansat
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experience"
-                id="expert"
-                value="expert"
-                checked={experience === 'expert'}
-                onChange={(e) => setExperience(e.target.value)}
-              />
-              <label htmlFor="expert" className="text-lg">
-                Expert
-              </label>
-            </div>
+          <div className="w-full flex gap-6 mt-4">
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                experience === 'incepator'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setExperience, 'incepator')}
+            >
+              Începător
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                experience === 'intermediar'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setExperience, 'intermediar')}
+            >
+              Intermediar
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                experience === 'avansat'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setExperience, 'avansat')}
+            >
+              Avansat
+            </button>
+            <button
+              type="button"
+              className={`py-2 px-4 rounded ${
+                experience === 'expert'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200'
+              }`}
+              onClick={() => handleSelect(setExperience, 'expert')}
+            >
+              Expert
+            </button>
           </div>
         </>
       ),
@@ -253,4 +211,11 @@ export const Slide = () => {
       />
     </div>
   );
+};
+
+// PropTypes validation
+Slide.propTypes = {
+  currentSlide: PropTypes.number.isRequired,
+  handleNext: PropTypes.func.isRequired,
+  handlePrev: PropTypes.func.isRequired,
 };
