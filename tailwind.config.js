@@ -4,7 +4,10 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'form-bg': "url('/src/assets/bg2.webp')", // Calea către imaginea locală
+        'form-bg': "url('/src/assets/bg2.webp')",
+      },
+      colors: {
+        customPink: '#FF94D5',
       },
     },
   },

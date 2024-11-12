@@ -20,7 +20,7 @@ export const NavigationBtns = ({
       </button>
 
       <button
-        className="bg-blue-500 text-white py-2 w-4/12 px-6 rounded-md"
+        className="bg-customPink text-white py-2 w-4/12 px-6 rounded-md"
         onClick={
           currentSlide === totalSlides - 1
             ? () => window.location.reload()

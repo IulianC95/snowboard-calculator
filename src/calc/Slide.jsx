@@ -71,7 +71,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
             <button
               type="button"
               className={`py-2 px-4 rounded ${
-                gender === 'barbat' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                gender === 'barbat' ? 'bg-customPink text-white' : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setGenderLocal, 'barbat')}
             >
@@ -80,7 +80,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
             <button
               type="button"
               className={`py-2 px-4 rounded ${
-                gender === 'femeie' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                gender === 'femeie' ? 'bg-customPink text-white' : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setGenderLocal, 'femeie')}
             >
@@ -89,7 +89,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
             <button
               type="button"
               className={`py-2 px-4 rounded ${
-                gender === 'copil' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                gender === 'copil' ? 'bg-customPink text-white' : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setGenderLocal, 'copil')}
             >
@@ -149,7 +149,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
               type="button"
               className={`py-2 px-4 rounded ${
                 style === 'all-mountain'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-customPink text-white'
                   : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setStyleLocal, 'all-mountain')}
@@ -159,7 +159,9 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
             <button
               type="button"
               className={`py-2 px-4 rounded ${
-                style === 'freestyle' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                style === 'freestyle'
+                  ? 'bg-customPink text-white'
+                  : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setStyleLocal, 'freestyle')}
             >
@@ -168,7 +170,9 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
             <button
               type="button"
               className={`py-2 px-4 rounded ${
-                style === 'freeride' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+                style === 'freeride'
+                  ? 'bg-customPink text-white'
+                  : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setStyleLocal, 'freeride')}
             >
@@ -190,7 +194,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
               type="button"
               className={`py-2 px-4 rounded ${
                 experience === 'incepator'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-customPink text-white'
                   : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setExperienceLocal, 'incepator')}
@@ -201,7 +205,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
               type="button"
               className={`py-2 px-4 rounded ${
                 experience === 'intermediar'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-customPink text-white'
                   : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setExperienceLocal, 'intermediar')}
@@ -212,7 +216,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
               type="button"
               className={`py-2 px-4 rounded ${
                 experience === 'avansat'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-customPink text-white'
                   : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setExperienceLocal, 'avansat')}
@@ -223,7 +227,7 @@ export const Slide = ({ currentSlide, handleNext, handlePrev }) => {
               type="button"
               className={`py-2 px-4 rounded ${
                 experience === 'expert'
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-customPink text-white'
                   : 'bg-gray-300'
               }`}
               onClick={() => handleSelect(setExperienceLocal, 'expert')}
